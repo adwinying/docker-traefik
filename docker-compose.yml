@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  ghost:
+    image: ghost:3
+    ports:
+      - 5001:2368
+    volumes:
+      - ./data/ghost:/var/lib/ghost/content
+
+  dokuwiki:
+    image: bitnami/dokuwiki:0
+    ports:
+      - 5002:80
+    volumes:
+      - ./data/dokuwiki:/bitnami
