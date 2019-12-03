@@ -7,6 +7,8 @@ services:
       - 5001:2368
     volumes:
       - ./data/ghost:/var/lib/ghost/content
+    labels:
+      - "traefik.http.routers.ghost.rule=Host(`blog.myserver.test`)"
 
   dokuwiki:
     image: bitnami/dokuwiki:0
@@ -14,6 +16,8 @@ services:
       - 5002:80
     volumes:
       - ./data/dokuwiki:/bitnami
+    labels:
+      - "traefik.http.routers.dokuwiki.rule=Host(`wiki.myserver.test`)"
 
   traefik:
     container_name: traefik
