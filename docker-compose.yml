@@ -14,3 +14,13 @@ services:
       - 5002:80
     volumes:
       - ./data/dokuwiki:/bitnami
+
+  traefik:
+    container_name: traefik
+    image: traefik:2.0
+    ports:
+      - 5003:8080 # webUI
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config/traefik/traefik.yml:/etc/traefik/traefik.yml
